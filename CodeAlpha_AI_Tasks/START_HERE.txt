@@ -1,0 +1,9 @@
+CODE ALPHA – AI TASK 1 AND TASK 2
+
+This ZIP contains two independent Python Flask projects:
+1. Task1_Language_Translation_Tool – MyMemory API (not Google)
+2. Task2_FAQ_Chatbot – TF-IDF + cosine similarity
+
+Open each project's README.md for exact installation and run steps.
+Each app runs locally at http://127.0.0.1:5000, so run only one project at a time.
+An internet connection is required for Task 1 translation. Task 2 works locally after packages are installed.

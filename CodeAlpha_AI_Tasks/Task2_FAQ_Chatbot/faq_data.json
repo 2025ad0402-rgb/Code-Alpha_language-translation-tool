@@ -1,0 +1,82 @@
+[
+  {
+    "question": "What is artificial intelligence?",
+    "answer": "Artificial Intelligence (AI) is a field of computer science that makes machines perform tasks that normally require human intelligence, such as learning, reasoning and problem-solving."
+  },
+  {
+    "question": "What is machine learning?",
+    "answer": "Machine Learning (ML) is a branch of AI that enables computers to learn patterns from data and make predictions or decisions without being explicitly programmed for every task."
+  },
+  {
+    "question": "What is deep learning?",
+    "answer": "Deep Learning is a part of machine learning that uses neural networks with multiple layers to learn complex patterns from large amounts of data."
+  },
+  {
+    "question": "What is Python?",
+    "answer": "Python is a high-level, interpreted programming language known for its simple syntax. It is widely used in AI, data science, web development and automation."
+  },
+  {
+    "question": "What is a dataset?",
+    "answer": "A dataset is an organized collection of related data used for analysis, testing or training a machine learning model."
+  },
+  {
+    "question": "What is supervised learning?",
+    "answer": "Supervised learning trains a model using labelled examples. Each training example contains an input and its correct output."
+  },
+  {
+    "question": "What is unsupervised learning?",
+    "answer": "Unsupervised learning finds patterns or groups in data that has no labelled output. Clustering is a common example."
+  },
+  {
+    "question": "What is reinforcement learning?",
+    "answer": "Reinforcement learning is a machine learning method in which an agent learns by taking actions and receiving rewards or penalties from its environment."
+  },
+  {
+    "question": "What is natural language processing?",
+    "answer": "Natural Language Processing (NLP) is a field of AI that helps computers understand, process and generate human language."
+  },
+  {
+    "question": "What is a chatbot?",
+    "answer": "A chatbot is a software application that interacts with users through text or voice and provides answers or performs tasks."
+  },
+  {
+    "question": "What is an API?",
+    "answer": "An API (Application Programming Interface) allows two software applications to communicate and exchange data."
+  },
+  {
+    "question": "What is Flask?",
+    "answer": "Flask is a lightweight Python web framework used to build web applications and web APIs."
+  },
+  {
+    "question": "What is TF-IDF?",
+    "answer": "TF-IDF stands for Term Frequency–Inverse Document Frequency. It converts text into numerical features based on how important words are in a document compared with a collection of documents."
+  },
+  {
+    "question": "What is cosine similarity?",
+    "answer": "Cosine similarity measures how similar two text vectors are by calculating the cosine of the angle between them. A higher score generally means the texts are more similar."
+  },
+  {
+    "question": "What is GitHub?",
+    "answer": "GitHub is an online platform for hosting Git repositories, tracking code changes and collaborating on software projects."
+  },
+  {
+    "question": "How do I run a Python project?",
+    "answer": "Open a terminal in the project folder, install the packages listed in requirements.txt using pip install -r requirements.txt, and run the main Python file using python app.py."
+  },
+  {
+    "question": "How do I install Python packages?",
+    "answer": "Use the command pip install package_name in your terminal. For this project, install all required packages with pip install -r requirements.txt."
+  },
+  {
+    "question": "What should I include in a project submission?",
+    "answer": "Include your source code, a README with setup and run instructions, screenshots or a short demonstration video if requested, and your repository link."
+  },
+  {
+    "question": "How do I upload my project to GitHub?",
+    "answer": "Create a new repository on GitHub, then follow the repository's instructions to add your project files, commit the changes and push them to the repository."
+  },
+  {
+    "question": "What is the purpose of an FAQ chatbot?",
+    "answer": "An FAQ chatbot automatically answers frequently asked questions by finding the stored question that is most similar to the user's message."
+  }
+]

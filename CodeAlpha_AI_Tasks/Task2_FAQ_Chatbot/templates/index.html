@@ -1,0 +1,55 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FAQ Chatbot</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#eef3f8;font-family:Arial,sans-serif;color:#1c2940;min-height:100vh;display:grid;place-items:center;padding:20px}
+.app{width:min(1100px,98%);height:min(950px,96vh);background:white;border-radius:20px;box-shadow:0 14px 42px #1d35571c;display:flex;flex-direction:column;overflow:hidden}
+header{background:#2457a7;color:white;padding:22px 24px}h1{margin:0 0 6px;font-size:24px}header p{margin:0;color:#e0eaff;font-size:14px}
+#chat{padding:22px;overflow:auto;flex:1;background:#f8faff}.bubble{max-width:86%;padding:13px 15px;border-radius:20px;margin:0 0 14px;line-height:1.5;white-space:pre-wrap;overflow-wrap:anywhere}
+.bot{background:white;border:1px solid #e1e8f3;border-top-left-radius:4px}.user{background:#dce9ff;margin-left:auto;border-top-right-radius:4px}
+.meta{font-size:11px;color:#77849b;margin-top:7px}.composer{display:flex;gap:10px;padding:16px;border-top:1px solid #e5eaf2}
+input{flex:1;min-width:0;border:1px solid #ccd6e5;border-radius:12px;padding:13px;font:inherit}button{border:0;background:#2457a7;color:white;font-weight:700;padding:0 20px;border-radius:12px;cursor:pointer}button:disabled{opacity:.6}
+.examples{padding:0 18px 15px;color:#71809a;font-size:12px}.examples button{background:#edf3ff;color:#2457a7;padding:7px 10px;margin:5px 3px 0 0;font-weight:500}
+@media(max-width:520px){.app{height:94vh}.bubble{max-width:95%}.composer{padding:12px}button#send{padding:0 14px}}
+</style>
+</head>
+<body>
+<main class="app">
+<header><h1>💬 FAQ Chatbot</h1><p>Ask a question about AI, Python, machine learning or project work.</p></header>
+<section id="chat" aria-live="polite">
+<div class="bubble bot">Hello! I am your FAQ assistant. Type a question and I will find the closest matching FAQ using TF-IDF and cosine similarity.</div>
+</section>
+<div class="examples">Try:
+<button onclick="useExample('What is machine learning?')">What is machine learning?</button>
+<button onclick="useExample('How do I run a Python project?')">How do I run a Python project?</button>
+<button onclick="useExample('What is TF-IDF?')">What is TF-IDF?</button>
+</div>
+<form class="composer" onsubmit="sendQuestion(event)">
+<input id="question" maxlength="500" placeholder="Type your question..." autocomplete="off" required>
+<button id="send" type="submit">Send</button>
+</form>
+</main>
+<script>
+const chat=document.getElementById('chat');
+function addBubble(text,kind,meta=''){
+ const div=document.createElement('div');div.className='bubble '+kind;div.textContent=text;
+ if(meta){const m=document.createElement('div');m.className='meta';m.textContent=meta;div.appendChild(m);}
+ chat.appendChild(div);chat.scrollTop=chat.scrollHeight;
+}
+function useExample(text){document.getElementById('question').value=text;document.getElementById('question').focus();}
+async function sendQuestion(event){
+ event.preventDefault();const input=document.getElementById('question'),btn=document.getElementById('send'),q=input.value.trim();
+ if(!q)return;addBubble(q,'user');input.value='';btn.disabled=true;
+ try{
+  const res=await fetch('/ask',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({question:q})});
+  const data=await res.json();if(!res.ok)throw new Error(data.error||'Something went wrong.');
+  const meta=data.matched?'Matched FAQ: '+data.matched_question+' • Similarity: '+data.similarity+'%':'No close match • Similarity: '+data.similarity+'%';
+  addBubble(data.answer,'bot',meta);
+ }catch(e){addBubble(e.message,'bot');}
+ finally{btn.disabled=false;input.focus();}
+}
+</script>
+</body></html>
